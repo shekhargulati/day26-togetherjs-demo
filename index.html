@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Run Java 8 in Cloud">
+<meta name="author" content="Shekhar Gulati">
+<title>TryJava8 | Run Java 8 in Cloud | Powered by OpenShift</title>
+
+<link rel="stylesheet" href="css/codemirror.css">
+<script src="js/codemirror.js"></script>
+<script src="js/matchbrackets.js"></script>
+<script src="js/clike.js"></script>
+<link rel="stylesheet" href="css/docs.css">
+<style>
+.CodeMirror {
+	border: 2px inset #dee;
+}
+</style>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+.labelStopwatch {
+	float: left;
+	width: 25em;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#stopwatch {
+	margin-bottom: 10px;
+	width: 150px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border: 2px solid #EEE;
+	float: left;
+	padding: 0px 8px;
+}
+</style>
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="brand" href="/">TryJava8</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="/">Home</a></li>
+					</ul>
+
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div class="hero-unit">
+
+						<h2>TryJava8 -- Free , Online Java 8 Code Editor</h2>
+						<small>Write your Java 8 code online anywhere , anytime
+							...</small>
+					</div>
+				</div>
+			</div>
+
+		<div class="row">
+			<div id="counter" class="span7"></div>
+			<div class="span7">
+				<h2>Run your Java 8 Code</h2>
+				<form id="codeForm">
+					<div class="control-group">
+						<div class="controls">
+							<textarea id="code" name="code"
+								placeholder="Write your Java8 Code"></textarea>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" class="btn btn-success">Run Code</button>
+							<button class="btn btn-info" onclick="TogetherJS(this); return false;" data-end-togetherjs-html="End TogetherJS">Start TogetherJS</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+
+
+			<div id="outputBox" class="span4 offset1">
+
+				<div id="stopWatchRow" class="row">
+					<h2>Program Timer (hh:mm:ss)</h2>
+					<div id="stopwatch" class="span4">00:00:00</div>
+				</div>
+
+				<div id="statusRow" class="row">
+					<h2>Program Status</h2>
+					<div id="status" class="span4"></div>
+				</div>
+
+				<div id="resultRow" class="row">
+					<h2>Program Output</h2>
+					<div id="result" class="span4"></div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div id="rules" class="row">
+			<div class="span12">
+				<h2>Assumptions</h2>
+				<ul>
+					<li>Don't use any package name.</li>
+					<li>Add all the required import statements.</li>
+					<li>The class name can be any valid Java classname but it
+						should be public as shown <code>public class Main</code>
+					</li>
+					<li>Every class should have main method. The program invoke
+						the main method.</li>
+					<li>The program should terminate under one minute else
+						application will terminate the program.</li>
+				</ul>
+				<h2>Example</h2>
+
+				<pre>
+import java.util.*;
+public class Main{
+	public static void main(String[] args){
+		List&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();
+		for(int i = 0;i<200;i++){
+			numbers.add(i);
+		}
+		numbers.forEach((Integer value) -> {
+		if(value % 2 == 0)				
+			System.out.println(value);
+		});
+	}
+}
+			</pre>
+			</div>
+		</div>
+
+
+
+
+		<footer id="footer">
+			<p>&copy; Shekhar Gulati 2013</p>
+
+			<p>
+				Made with love by <a href="https://twitter.com/shekhargulati/"
+					target="_blank">Shekhar Gulati</a>. Contact him at <a
+					href="mailto:shekhargulati84@gmail.com">shekhargulati84@gmail.com</a>.
+			</p>
+			<p>
+				<a href="https://www.openshift.com/" target="_blank"><img
+					alt="Powered by OpenShift"
+					src="https://www.openshift.com/sites/default/files/images/powered-transparent-black.png"></a>
+			</p>
+
+		</footer>
+
+	</div>
+
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="js/togetherjs-min.js"></script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.loadmask.min.js"></script>
+	<script type="text/javascript" src="js/jquery.stopwatch.js"></script>
+
+	<script type="text/javascript">
+		$("#statusRow").hide();
+		$("#resultRow").hide();
+	</script>
+	<script>
+		var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+			lineNumbers : true,
+			matchBrackets : true,
+			mode : "text/x-java"
+		});
+	</script>
+	<script type="text/javascript">
+		var clientId = guid();
+		$("#codeForm").submit(
+					function(event) {
+						event.preventDefault();
+						$('#stopwatch').stopwatch().stopwatch('reset');
+						$("#status").empty();
+						$("#result").empty();
+						var code = $('textarea').val();
+						if (!code) {
+							alert("Please write some code");
+							return;
+						}
+						$("#codeForm").mask("Running...");
+						$('#stopwatch').stopwatch().stopwatch('start');
+						var data = {
+								code : code
+						};
+						var url = "http://tryjava-t20.rhcloud.com/api/snippets";
+							$.ajax( url,
+											{
+												data : JSON.stringify(data),
+												crossDomain : true,
+												contentType : 'application/json',
+												type : 'POST',
+												async : true,
+												success : function(result) {
+													$("#codeForm").unmask();
+													$('#stopwatch').stopwatch()
+															.stopwatch('stop');
+													console.log(result);
+													$("#resultRow").show();
+													if (result.compilerOutput != 0) {
+														$("#result")
+																.append(
+																		"<p class='text-error'>"
+																				+ result.result
+																				+ "</p>");
+													} else if (result.verdict === "FAILURE") {
+														$("#result")
+																.append(
+																		"<p class='text-error'>"
+																				+ result.result
+																				+ "</p>");
+													} else {
+														$("#result")
+																.append(
+																		"<p class='text-success'>"
+																				+ result.result
+																				+ "</p>");
+													}
+											
+
+												},
+												error : function() {
+													$("#codeForm").unmask();
+													$('#stopwatch').stopwatch()
+															.stopwatch('stop');
+													alert("Something wrong happened on the server");
+												}
+											});
+
+						});
+
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000).toString(16)
+					.substring(1);
+		};
+
+		function guid() {
+			return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-'
+					+ s4() + s4() + s4();
+		}
+	</script>
+</body>
+</html>
